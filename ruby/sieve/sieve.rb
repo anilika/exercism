@@ -1,0 +1,17 @@
+class Sieve
+  attr_reader :num
+
+  def initialize(num)
+    @num = num
+  end
+
+  def primess
+    result = []
+    numbers = (2..num).to_a
+    until numbers.empty?
+      result << numbers.shift
+      numbers.reject! { |num| (num % result.last).zero? }
+    end
+    result
+  end
+end
