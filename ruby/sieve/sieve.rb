@@ -5,7 +5,7 @@ class Sieve
     @num = num
   end
 
-  def primess
+  def primes
     result = []
     numbers = (2..num).to_a
     until numbers.empty?
