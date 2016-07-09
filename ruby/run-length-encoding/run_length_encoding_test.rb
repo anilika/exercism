@@ -1,8 +1,12 @@
 #!/usr/bin/env ruby
 # encoding: utf-8
 gem 'minitest', '>= 5.0.0'
+
+require 'minitest/reporters'
 require 'minitest/autorun'
 require_relative 'run_length_encoding'
+
+Minitest::Reporters.use!
 
 # Test data version:
 # deb225e Implement canonical dataset for scrabble-score problem (#255)
@@ -15,7 +19,7 @@ class RunLengthEncodingTest < Minitest::Test
   end
 
   def test_decode_simple
-    skip
+    # skip
     input = '2A3B4C'
     output = 'AABBBCCCC'
     assert_equal output, RunLengthEncoding.decode(input)
@@ -29,14 +33,14 @@ class RunLengthEncodingTest < Minitest::Test
   end
 
   def test_decode_with_single_values
-    skip
+    # skip
     input = '12WB12W3B24WB'
     output = 'WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWB'
     assert_equal output, RunLengthEncoding.decode(input)
   end
 
   def test_decode_encode_combination
-    skip
+    # skip
     input = 'zzz ZZ  zZ'
     output = 'zzz ZZ  zZ'
     assert_equal output,
@@ -51,7 +55,7 @@ class RunLengthEncodingTest < Minitest::Test
   end
 
   def test_decode_unicode
-    skip
+    # skip
     input = '⏰3⚽2⭐⏰'
     output = '⏰⚽⚽⚽⭐⭐⏰'
     assert_equal output, RunLengthEncoding.decode(input)

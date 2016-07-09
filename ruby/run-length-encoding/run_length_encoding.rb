@@ -11,6 +11,11 @@ module RunLengthEncoding
     end
     result
   end
-end
 
-# puts RunLengthEncoding.encode('⏰⚽⚽⚽⭐⭐⏰')
+  def self.decode(data)
+    nums, letters = data.split(/[^0-9]/), data.scan(/[^0-9]/)
+    letters.zip(nums).map do |pair|
+      pair.last == '' || pair.last.nil?  ? pair.first : pair.first * pair.last.to_i
+    end.join
+  end
+end
