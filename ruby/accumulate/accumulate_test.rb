@@ -1,7 +1,10 @@
 #!/usr/bin/env ruby
 gem 'minitest', '>= 5.0.0'
+require 'minitest/reporters'
 require 'minitest/autorun'
 require_relative 'accumulate'
+
+Minitest::Reporters.use!
 
 class ArrayTest < Minitest::Test
   def test_empty_accumulation
@@ -9,7 +12,7 @@ class ArrayTest < Minitest::Test
   end
 
   def test_accumulate_squares
-    skip
+    # skip
     result = [1, 2, 3].accumulate do |number|
       number * number
     end
@@ -17,19 +20,19 @@ class ArrayTest < Minitest::Test
   end
 
   def test_accumulate_upcases
-    skip
+    # skip
     result = %w(hello world).accumulate(&:upcase)
     assert_equal %w(HELLO WORLD), result
   end
 
   def test_accumulate_reversed_strings
-    skip
+    # skip
     result = %w(the quick brown fox etc).accumulate(&:reverse)
     assert_equal %w(eht kciuq nworb xof cte), result
   end
 
   def test_accumulate_recursively
-    skip
+    # skip
     result = %w(a b c).accumulate do |char|
       %w(1 2 3).accumulate do |digit|
         "#{char}#{digit}"
