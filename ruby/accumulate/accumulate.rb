@@ -1,9 +1,7 @@
 class Array
   def accumulate
     result = []
-    self.each do |x|
-      result.push(yield(x))
-    end
+    self.each { |x| result.push(yield(x)) }
     result
   end
 end
