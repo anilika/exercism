@@ -15,7 +15,7 @@ class TransformTest < Minitest::Test
   end
 
   def test_transform_more_values
-    skip
+    # skip
     old = { 1 => %w(A E I O U) }
     expected = { 'a' => 1, 'e' => 1, 'i' => 1, 'o' => 1, 'u' => 1 }
 
@@ -23,7 +23,7 @@ class TransformTest < Minitest::Test
   end
 
   def test_more_keys
-    skip
+    # skip
     old = { 1 => %w(A E), 2 => %w(D G) }
     expected = {
       'a' => 1,
@@ -36,7 +36,7 @@ class TransformTest < Minitest::Test
   end
 
   def test_full_dataset # rubocop:disable Metrics/MethodLength
-    skip
+    # skip
     old = {
       1 => %w(A E I O U L N R S T),
       2 => %w(D G),
