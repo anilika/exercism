@@ -1,6 +1,6 @@
 class BeerSong
-  STRINGS = { first: "{{bottles}} of beer on the wall, {{bottles}} of beer.\n",
-              second: "Take {{one}} down and pass it around, {{bottles}} of beer on the wall.\n",
+  STRINGS = { first: "{{bottles}} bottle{{s}} of beer on the wall, {{bottles}} bottle{{s}} of beer.\n",
+              second: "Take {{one}} down and pass it around, {{bottles}} bottle{{s}} of beer on the wall.\n",
               last: "Go to the store and buy some more, 99 bottles of beer on the wall.\n" }
 
   def initialize
@@ -8,15 +8,15 @@ class BeerSong
   end
 
   def verse(number)
-    song[number]
+    @song[number]
   end
 
   def verses(start_couplet, end_couplet)
-    start_couplet.downto(end_couplet).map { |couplet| song[couplet] + "\n" }.join.chomp
+    start_couplet.downto(end_couplet).map { |couplet| verse(couplet) + "\n" }.join.chomp
   end
 
   def lyrics
-    song.values.map { |couplet| couplet + "\n" }.join.chomp
+    @song.values.map { |couplet| couplet + "\n" }.join.chomp
   end
 
   private
@@ -24,7 +24,7 @@ class BeerSong
   def create(number)
     song = {}
     song[number] = couplet_line(:first, number)
-    (number-1).downto(0).each do |bottle|
+    (number - 1).downto(0).each do |bottle|
       song[bottle + 1].concat(couplet_line(:second, bottle))
       song[bottle] = couplet_line(:first, bottle)
     end
@@ -34,13 +34,9 @@ class BeerSong
 
   def couplet_line(line, bottle, one = 'one')
     one = 'it' if line == :second && bottle == 0
-    bottle = case bottle
-    when 0 then 'no more bottles'
-    when 1 then '1 bottle'
-    else
-      "#{bottle} bottles"
-    end
-    subst(line, bottles: bottle, one: one).capitalize
+    bottle = 'no more' if bottle == 0
+    s = bottle == 1 ? '' : 's'
+    subst(line, bottles: bottle, one: one, s: s).capitalize
   end
 
   def subst(key, values)
@@ -52,6 +48,4 @@ class BeerSong
     end
     line
   end
-
-  attr_reader :song
 end
