@@ -1,39 +1,36 @@
 module RailFenceCipher
   def self.encode(phrase, rail)
-    result = Array.new(phrase.size) { Array.new(rail) }
-    place, route = 0, true
-    phrase.chars.each_with_index do |char, index|
-      result[index][place] = char
-      if route
-        place == rail - 1 ? route = false : place += 1
-        place -= 1 unless route
-      else
-        place <= 0 ? route = true : place -= 1
-        place += 1 if route
-      end
-    end
-    result.transpose.join
+    placed_chars(create_rail(phrase.size, rail), phrase).transpose.join
   end
 
   def self.decode(phrase, rail)
-    result = Array.new(phrase.size) { Array.new(rail) }
+    placed_chars(create_rail(phrase.size, rail).transpose, phrase).transpose.join
+  end
+
+  def self.create_rail(length, width)
+    rail = Array.new(length) { Array.new(width) }
     place, route = 0, true
-    (0...phrase.size).each do |index|
-      result[index][place] = true
+    0.upto(length - 1).each do |level|
+      rail[level][place] = true
       if route
-        place == rail - 1 ? route = false : place += 1
+        place == width - 1 ? route = false : place += 1
         place -= 1 unless route
       else
         place <= 0 ? route = true : place -= 1
         place += 1 if route
       end
     end
-    result = result.transpose
+    rail
+  end
+
+  def self.placed_chars(rail, phrase)
     level = 0
     phrase.each_char do |char|
-      level += 1 unless result[level].index(true)
-      result[level][result[level].index(true)] = char
+      level += 1 unless rail[level].index(true)
+      rail[level][rail[level].index(true)] = char
     end
-    result.transpose.join
+    rail
   end
+
+  private_class_method :create_rail, :placed_chars
 end
