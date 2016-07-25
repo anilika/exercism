@@ -3,7 +3,7 @@ class Hexadecimal
                'd' => 13, 'e' => 14, 'f' => 15 }.freeze
 
   def initialize(hex_num)
-    @hex_num = hex_num
+    @hex_num = hex_num.downcase
   end
 
   def to_decimal
