@@ -6,7 +6,7 @@ class Hexadecimal
   end
 
   def to_decimal
-    return 0 unless @hex_num.scan(/[^abcdef0-9]/).empty?
+    return 0 unless @hex_num.scan(/\H/).empty?
     @hex_num.chars.reverse.each_with_index.inject(0) do |sum , (num, index)|
       num = LITERALS[num] ? LITERALS[num] : num.to_i
       sum + num * (16**index)
