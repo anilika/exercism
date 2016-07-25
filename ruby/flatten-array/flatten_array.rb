@@ -2,11 +2,8 @@ module FlattenArray
   def self.flatten(array)
     result = []
     array.each do |element|
-      if element.is_a?(Array)
-        result += flatten(element)
-      else
-        result.push(element) unless element.nil?
-      end
+      next if element.nil?
+      result += element.is_a?(Array) ? flatten(element) : [element]
     end
     result
   end
