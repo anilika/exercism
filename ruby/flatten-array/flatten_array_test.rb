@@ -13,25 +13,25 @@ class FlattenArrayTest < Minitest::Test
   end
 
   def test_five_level_nesting
-    skip
+    # skip
     fa = FlattenArray.flatten([0, 2, [[2, 3], 8, 100, 4, [[[50]]]], -2])
     assert_equal [0, 2, 2, 3, 8, 100, 4, 50, -2], fa
   end
 
   def test_six_level_nesting
-    skip
+    # skip
     fa = FlattenArray.flatten([1, [2, [[3]], [4, [[5]]], 6, 7], 8])
     assert_equal [1, 2, 3, 4, 5, 6, 7, 8], fa
   end
 
   def test_six_level_nesting_with_nil_values
-    skip
+    # skip
     fa = FlattenArray.flatten([0, 2, [[2, 3], 8, [[100]], nil, [[nil]]], -2])
     assert_equal [0, 2, 2, 3, 8, 100, -2], fa
   end
 
   def test_all_values_are_nil
-    skip
+    # skip
     fa = FlattenArray.flatten([nil, [[[nil]]], nil, [[nil, nil], nil], nil])
     assert_equal [], fa
   end
