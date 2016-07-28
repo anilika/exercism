@@ -15,7 +15,16 @@ class Queens
   end
 
   def attack?
-    return true if white.first == black.first || white.last == black.last
+    row_or_column? || diagonal?
+  end
+
+  private
+
+  def row_or_column?
+    (white + black).uniq.size < 4
+  end
+
+  def diagonal?
     (white.first - black.first).abs == (white.last - black.last).abs
   end
 end
