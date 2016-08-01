@@ -1,13 +1,9 @@
 class Array
   def discard
-    result = []
-    self.each { |x| result.push(x) unless yield(x) }
-    result
+    self.each_with_object([]) { |x, result| result.push(x) unless yield(x) }
   end
 
   def keep
-    result = []
-    self.each { |x| result.push(x) if yield(x) }
-    result
+    self.each_with_object([]) { |x, result| result.push(x) if yield(x) }
   end
 end
