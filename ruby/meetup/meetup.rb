@@ -10,12 +10,12 @@ end
 
 class Meetup
   def initialize(month, year)
-    @first_day = Date.new(year, month)
+    first_day = Date.new(year, month)
+    @month = first_day.upto(first_day.next_month - 1)
   end
 
   def day(weekday, schedule)
-    month = @first_day.upto(@first_day.next_month - 1)
-    days = month.select { |day| day.send(weekday.to_s + '?') }
+    days = @month.select { |day| day.send(weekday.to_s + '?') }
     days.respond_to?(schedule) ? days.send(schedule) : teenth(days)
   end
 
