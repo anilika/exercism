@@ -1,16 +1,14 @@
 module Brackets
-  BRACKETS = [['(', ')'], ['[', ']'], ['{', '}']].freeze
-  OPEN_BRACKETS = ['(', '[', '{'].freeze
+  BRACKETS = { '(' => ')', '[' => ']', '{' => '}' }.freeze
 
-  def self.paired?(brackets)
-    result = []
-    brackets.gsub(/[^({\[)}\]]/, '').each_char do |bracket|
-      if OPEN_BRACKETS.include?(bracket)
-        result.push(bracket)
+  def self.paired?(string)
+    string.gsub(/[^({\[)}\]]/, '').chars.each_with_object([]) do |bracket, store|
+      if BRACKETS[bracket]
+        store.push(bracket)
       else
-        BRACKETS.include?([result.last, bracket]) ? result.pop : result.push(bracket)
+        return false unless BRACKETS[store.last] == bracket
+        store.pop
       end
-    end
-    result.empty?
+    end.empty?
   end
 end
