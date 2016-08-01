@@ -23,10 +23,8 @@ class Nucleotide
   end
 
   def compute_nucleotides(dna)
-    result = {}
-    NUCLEOTIDES.each do |nucleotide|
+    NUCLEOTIDES.each_with_object({}) do |nucleotide, result|
       result[nucleotide] = dna.scan(nucleotide).size
     end
-    result
   end
 end
