@@ -21,13 +21,13 @@ class Clock
   end
 
   def to_s
-    time = time_to_h_m.map { |num| add_zero(num) }
+    time = time_to_hours_minutes.map { |num| add_zero(num) }
     "#{time.first}:#{time.last}"
   end
 
   private
 
-  def time_to_h_m
+  def time_to_hours_minutes
     hours, minutes = minutes_time.divmod(PERIODS[:minute])
     hours = hours % PERIODS[:hour]
     [hours.to_s, minutes.to_s]
