@@ -4,11 +4,7 @@ class Series
   end
 
   def slices(num)
-    raise ArgumentError if num > digits.size
-    0.upto(digits.size - num).map { |index| digits.slice(index, num) }
+    raise ArgumentError if num > @digits.size
+    0.upto(@digits.size - num).map { |index| @digits.slice(index, num) }
   end
-
-  private
-  attr_reader :digits
 end
-
