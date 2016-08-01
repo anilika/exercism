@@ -1,7 +1,10 @@
 #!/usr/bin/env ruby
 gem 'minitest', '>= 5.0.0'
+require 'minitest/reporters'
 require 'minitest/autorun'
 require_relative 'sieve'
+
+Minitest::Reporters.use!
 
 class SieveTest < Minitest::Test
   def test_no_primes_under_two
