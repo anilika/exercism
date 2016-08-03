@@ -13,11 +13,11 @@ module House
               'horse and the hound and the horn' => 'belonged to' }.freeze
 
   def self.recite
-    STRINGS.each_with_object([]) do |(name, action), store|
-      if store.empty?
-        store.push("This is the #{name} that #{action}.\n\n")
+    STRINGS.each_with_object([]) do |(name, action), song|
+      if song.empty?
+        song.push("This is the #{name} that #{action}.\n\n")
       else
-        store.push(store.last.dup.insert(8, "the #{name}\nthat #{action} "))
+        song.push(song.last.dup.insert(8, "the #{name}\nthat #{action} "))
       end
     end.join.chomp
   end
