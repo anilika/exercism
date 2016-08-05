@@ -8,11 +8,10 @@ class Proverb
   end
 
   def to_s
-    @characters.each_with_index.with_object([]) do |(name, index), song|
-      song.push(subst(:last, name: @qualifier + name)) if song.empty?
-      next_name = @characters[index + 1]
-      song.insert(-2, subst(:couplet, name: name, next_name: next_name)) if next_name
-    end.join("\n")
+    song = @characters.each_cons(2).map do |names|
+      subst(:couplet, name: names.first, next_name: names.last)
+    end
+    song.push(subst(:last, name: @qualifier + @characters.first)).join("\n")
   end
 
   private
