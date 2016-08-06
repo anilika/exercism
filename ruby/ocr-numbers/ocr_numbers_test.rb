@@ -19,7 +19,7 @@ class OCRTest < Minitest::Test
   end
 
   def test_recognize_one
-    skip
+    # skip
     text = <<-NUMBER.chomp
 
   |
@@ -30,7 +30,7 @@ class OCRTest < Minitest::Test
   end
 
   def test_recognize_two
-    skip
+    # skip
     text = <<-NUMBER.chomp
  _
  _|
@@ -41,7 +41,7 @@ class OCRTest < Minitest::Test
   end
 
   def test_recognize_three
-    skip
+    # skip
     text = <<-NUMBER.chomp
  _
  _|
@@ -52,7 +52,7 @@ class OCRTest < Minitest::Test
   end
 
   def test_recognize_four
-    skip
+    # skip
     text = <<-NUMBER.chomp
 
 |_|
@@ -63,7 +63,7 @@ class OCRTest < Minitest::Test
   end
 
   def test_recognize_five
-    skip
+    # skip
     text = <<-NUMBER.chomp
  _
 |_
@@ -74,7 +74,7 @@ class OCRTest < Minitest::Test
   end
 
   def test_recognize_six
-    skip
+    # skip
     text = <<-NUMBER.chomp
  _
 |_
@@ -85,7 +85,7 @@ class OCRTest < Minitest::Test
   end
 
   def test_recognize_seven
-    skip
+    # skip
     text = <<-NUMBER.chomp
  _
   |
@@ -96,7 +96,7 @@ class OCRTest < Minitest::Test
   end
 
   def test_recognize_eight
-    skip
+    # skip
     text = <<-NUMBER.chomp
  _
 |_|
@@ -107,7 +107,7 @@ class OCRTest < Minitest::Test
   end
 
   def test_recognize_nine
-    skip
+    # skip
     text = <<-NUMBER.chomp
  _
 |_|
@@ -118,7 +118,7 @@ class OCRTest < Minitest::Test
   end
 
   def test_identify_garble
-    skip
+    # skip
     text = <<-NUMBER.chomp
 
 | |
@@ -129,7 +129,7 @@ class OCRTest < Minitest::Test
   end
 
   def test_identify_10
-    skip
+    # skip
     text = <<-NUMBER.chomp
     _
   || |
@@ -140,7 +140,7 @@ class OCRTest < Minitest::Test
   end
 
   def test_identify_110101100
-    skip
+    # skip
     text = <<-NUMBER.chomp
        _     _        _  _
   |  || |  || |  |  || || |
@@ -151,7 +151,7 @@ class OCRTest < Minitest::Test
   end
 
   def test_identify_with_garble
-    skip
+    # skip
     text = <<-NUMBER.chomp
        _     _           _
   |  || |  || |     || || |
@@ -162,7 +162,7 @@ class OCRTest < Minitest::Test
   end
 
   def test_identify_1234567890
-    skip
+    # skip
     text = <<-NUMBER.chomp
     _  _     _  _  _  _  _  _
   | _| _||_||_ |_   ||_||_|| |
@@ -173,7 +173,7 @@ class OCRTest < Minitest::Test
   end
 
   def test_identify_123_456_789 # rubocop:disable Metrics/MethodLength
-    skip
+    # skip
     text = <<-NUMBER.chomp
     _  _
   | _| _|
