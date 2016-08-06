@@ -190,4 +190,16 @@ class OCRTest < Minitest::Test
 NUMBER
     assert_equal '123,456,789', OCR.new(text).convert
   end
+
+  def test_recognize_eleven
+    # skip
+    text = <<-NUMBER.chomp
+
+  |  |
+  |  |
+
+    NUMBER
+    assert_equal '11', OCR.new(text).convert
+  end
+
 end

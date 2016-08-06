@@ -8,7 +8,7 @@ class OCR
                     ' _ |_ |_|' => '6',
                     ' _   |  |' => '7',
                     ' _ |_||_|' => '8',
-                    ' _ |_| _|' => '9'}
+                    ' _ |_| _|' => '9' }.freeze
 
   def initialize(text_num)
     @text_num = text_num
@@ -16,14 +16,18 @@ class OCR
 
   def convert
     @text_num.split("\n\n").map do |numbers|
-      numbers.split("\n").map do |row|
-        row =+ ' ' unless row.size % 3 == 0
-        row = '   ' if row == ''
-        row.chars.each_slice(3).to_a
-      end.transpose.each_with_object('') do |num, result|
-        dec_num = TRANSCRIPTION[num.join] ? (TRANSCRIPTION[num.join]) : '?'
-        result << dec_num
-      end
+      collect_row(numbers).transpose.map do |num|
+        TRANSCRIPTION[num.join] ? (TRANSCRIPTION[num.join]) : '?'
+      end.join
     end.join(',')
+  end
+
+  def collect_row(numbers)
+    rows = numbers.split("\n")
+    row_size = rows.map(&:size).max
+    rows.each_with_index.map do |row|
+      row += ' ' * (row_size - row.size) unless row.size == row_size
+      row.chars.each_slice(3).to_a
+    end
   end
 end
