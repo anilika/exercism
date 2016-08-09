@@ -29,6 +29,6 @@ class Cipher
   end
 
   def generated_key
-    (0...50).map { ('a'..'z').to_a[rand(26)] }.join
+    0.upto(100).map { ('a'..'z').to_a[rand(26)] }.join
   end
 end
