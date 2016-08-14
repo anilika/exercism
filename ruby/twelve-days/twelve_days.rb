@@ -12,7 +12,7 @@ class TwelveDays
            'eleven Pipers Piping,',
            'twelve Drummers Drumming,'].freeze
   DAYS = %w(first second third fourth fifth sixth
-            seventh eighth ninth tenth eleventh twelfth)
+            seventh eighth ninth tenth eleventh twelfth).freeze
 
   def self.song
     0.upto(GIFTS.size - 1).map do |day|
