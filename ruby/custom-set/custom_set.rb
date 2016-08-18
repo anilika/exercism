@@ -7,7 +7,7 @@ class CustomSet
   end
 
   def add(element)
-    if @nodes.select { |node| node.data == element }.empty?
+    if @nodes.select { |node| node.date == element }.empty?
       @nodes.push(Node.new(element))
       @nodes = @nodes.sort
     end
@@ -15,15 +15,15 @@ class CustomSet
   end
 
   def intersection(other)
-    CustomSet.new(other.nodes.select { |node| member?(node.data) }.map(&:data))
+    CustomSet.new(other.nodes.select { |node| member?(node.date) }.map(&:date))
   end
 
   def difference(other)
-    CustomSet.new(nodes.reject { |node| other.member?(node.data) }.map(&:data))
+    CustomSet.new(nodes.reject { |node| other.member?(node.date) }.map(&:date))
   end
 
   def union(other_set)
-    CustomSet.new((nodes + other_set.nodes).uniq.map(&:data))
+    CustomSet.new((nodes + other_set.nodes).uniq.map(&:date))
   end
 
   def empty?
@@ -31,7 +31,7 @@ class CustomSet
   end
 
   def member?(other_element)
-    @nodes.any? { |node| node.data == other_element }
+    @nodes.any? { |node| node.date == other_element }
   end
 
   def subset?(other)
@@ -53,13 +53,13 @@ end
 
 class Node
   include Comparable
-  attr_reader :data
+  attr_reader :date
 
-  def initialize(data)
-    @data = data
+  def initialize(date)
+    @date = date
   end
 
   def <=>(other)
-    data <=> other.data
+    date <=> other.date
   end
 end
