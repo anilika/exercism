@@ -25,6 +25,7 @@ class PerfectNumberTest < Minitest::Test
   end
 
   def test_bookkeeping
+    skip
     assert_equal 1, BookKeeping::VERSION
   end
 end
