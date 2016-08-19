@@ -31,5 +31,5 @@ module Board
     board.all? { |row| row.scan(/[^-+]/).empty? || row.scan(/[^ *|]/).empty? }
   end
 
-  private_class_method :each_place
+  private_class_method :each_place, :check_board
 end
